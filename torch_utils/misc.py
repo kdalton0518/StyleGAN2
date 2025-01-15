@@ -262,5 +262,4 @@ def print_module_summary(module, inputs, max_nesting=3, skip_redundant=True):
         print('  '.join(cell + ' ' * (width - len(cell)) for cell, width in zip(row, widths)))
     print()
     return outputs
-
 #----------------------------------------------------------------------------

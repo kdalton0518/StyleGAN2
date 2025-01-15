@@ -16,11 +16,11 @@ from edit.edit_helper import conv_warper, decoder, encoder_ifg, encoder_ss, enco
 
 """
 Edit generated images with different SOTA methods. 
- Notes:
- 1. We provide some latent directions in the folder, you can play around with them.
- 2. ''upper_length'' and ''bottom_length'' of ''attr_name'' are available for demo.
- 3. Layers to control and editing strength are set in edit/edit_config.py.
- 
+    Notes:
+    1. We provide some latent directions in the folder, you can play around with them.
+    2. ''upper_length'' and ''bottom_length'' of ''attr_name'' are available for demo.
+    3. Layers to control and editing strength are set in edit/edit_config.py.
+    
 Examples:
 
 \b

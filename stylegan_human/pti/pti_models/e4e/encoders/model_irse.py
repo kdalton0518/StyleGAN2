@@ -18,27 +18,27 @@ class Backbone(Module):
         elif mode == 'ir_se':
             unit_module = bottleneck_IR_SE
         self.input_layer = Sequential(Conv2d(3, 64, (3, 3), 1, 1, bias=False),
-                                      BatchNorm2d(64),
-                                      PReLU(64))
+                                    BatchNorm2d(64),
+                                    PReLU(64))
         if input_size == 112:
             self.output_layer = Sequential(BatchNorm2d(512),
-                                           Dropout(drop_ratio),
-                                           Flatten(),
-                                           Linear(512 * 7 * 7, 512),
-                                           BatchNorm1d(512, affine=affine))
+                                        Dropout(drop_ratio),
+                                        Flatten(),
+                                        Linear(512 * 7 * 7, 512),
+                                        BatchNorm1d(512, affine=affine))
         else:
             self.output_layer = Sequential(BatchNorm2d(512),
-                                           Dropout(drop_ratio),
-                                           Flatten(),
-                                           Linear(512 * 14 * 14, 512),
-                                           BatchNorm1d(512, affine=affine))
+                                        Dropout(drop_ratio),
+                                        Flatten(),
+                                        Linear(512 * 14 * 14, 512),
+                                        BatchNorm1d(512, affine=affine))
 
         modules = []
         for block in blocks:
             for bottleneck in block:
                 modules.append(unit_module(bottleneck.in_channel,
-                                           bottleneck.depth,
-                                           bottleneck.stride))
+                                        bottleneck.depth,
+                                        bottleneck.stride))
         self.body = Sequential(*modules)
 
     def forward(self, x):
